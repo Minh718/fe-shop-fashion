@@ -10,8 +10,8 @@ import { useNavigate } from 'react-router-dom';
 export default function LoginEmailSDT({ open, handleClose }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [username, setUsername] = React.useState('');
-    const [password, setPassword] = React.useState('');
+    const [username, setUsername] = React.useState('admin@gmail.com');
+    const [password, setPassword] = React.useState('0934991797Aa');
     const handleLogin = async () => {
         try {
             const result = await userLoginByEmail({ username, password });

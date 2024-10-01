@@ -4,8 +4,8 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link } from 'react-router-dom';
 import { Backdrop, CircularProgress } from '@mui/material';
-import { oAuthConfig } from '../../configurations/oAuthConfig';
 import LoginEmailSDT from './components/LoginEmailSDT';
+import { oAuthConfig } from '../../configurations/oAuthConfig';
 export default function Login() {
   const [open, setOpen] = React.useState(false);
   const [userDetails, setUserDetails] = useState({});
