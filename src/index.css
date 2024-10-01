@@ -1,0 +1,92 @@
+*{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+  }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.underline-hover::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: currentColor;
+  transition: width 0.3s;
+}
+.underline-hover:hover::after {
+  width: 100%;
+}
+
+#select-quantity-detailproduct{
+  padding: 10px;
+}
+
+.indicator {
+  cursor: pointer;
+  padding:  4px 10px;
+  text-align: center;
+  border: 1px #666 solid;
+  margin: 0;
+}
+.indicators {
+  margin-top: 10px !important;
+}
+.indicator.active {
+  color: #fff;
+  background: #666;
+}
+.each-slide-effect > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  height: 500px;
+}
+
+.each-slide-effect span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+
+.each-slide-effect-detail-product-admin > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  /* height: 350px; */
+  width: 50%;
+}
+
+.each-slide-effect-detail-product-admin span {
+  padding: 20px;
+  font-size: 20px;
+  background: #efefef;
+  text-align: center;
+}
+
+/* Customize scrollbar for WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 4px; /* Width of the scrollbar */
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1; /* Background color of the scrollbar track */
+}
+
+/* Handle of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background-color: #888; /* Color of the scrollbar handle */
+  border-radius: 6px; /* Rounded corners of the scrollbar handle */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Darker color when hovered */
+}
+
