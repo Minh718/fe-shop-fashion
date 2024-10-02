@@ -19,7 +19,7 @@ export default function BoxChat({ setSize, size, messages, name, image = "avatar
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
             handleMessage();
-            // You can add any additional logic you want here
+            // You can add any additional logic you want here ds
         }
     };
     useEffect(() => {
