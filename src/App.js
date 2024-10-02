@@ -102,11 +102,6 @@ function App() {
       ]
     },
     {
-      path: "/authenticate",
-      element: <Authenticate />,
-      // loader: teamLoader,
-    },
-    {
       path: "/",
       element: <Home />,
       // loader: () => getAllCategories(),
@@ -117,6 +112,11 @@ function App() {
           loader: () => {
             return getListProductsForHomePage();
           },
+        },
+        {
+          path: "/authenticate",
+          element: <Authenticate />,
+          // loader: teamLoader,
         },
         {
           path: "/login",
