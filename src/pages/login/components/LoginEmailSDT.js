@@ -1,5 +1,5 @@
 import { Backdrop, CircularProgress } from '@mui/material'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
 import { userLoginByEmail } from '../../../api/authenthicateApi';
@@ -12,6 +12,7 @@ export default function LoginEmailSDT({ open, handleClose }) {
     const navigate = useNavigate();
     const [username, setUsername] = React.useState('admin@gmail.com');
     const [password, setPassword] = React.useState('0934991797Aa');
+    const { isAuthenticated } = useSelector(state => state.user);
     const handleLogin = async () => {
         try {
             const result = await userLoginByEmail({ username, password });
@@ -19,12 +20,16 @@ export default function LoginEmailSDT({ open, handleClose }) {
             Cookies.set('accessToken', result.accessToken);
             Cookies.set('refreshToken', result.refreshToken);
             Cookies.set('x-user-id', result.id);
-            navigate("/");
         } catch (err) {
             notifyError('Đăng nhập thất bại')
             navigate("/login");
         }
     }
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/home");
+        }
+    }, [isAuthenticated, navigate]);
     return (
         <Backdrop
             sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}

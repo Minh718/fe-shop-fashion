@@ -7,13 +7,8 @@ import axios from "axios";
 import { handleApiResponse } from "./utilApi";
 
 const userLoginByGoogle = async (authCode) => {
-    try {
-
-        const res = await axios.post(baseURL + `/auth/login/google?code=${authCode}`);
-        return handleApiResponse(res).result;
-    } catch (e) {
-        console.log(e)
-    }
+    const res = await axios.post(baseURL + `/auth/login/google?code=${authCode}`);
+    return handleApiResponse(res).result;
 };
 const userLoginByEmail = async (data) => {
     try {

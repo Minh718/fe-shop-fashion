@@ -38,5 +38,6 @@ export const getClaimFromToken = (token, claim) => {
 export const checkIsAdmin = () => {
     const accessToken = Cookies.get('accessToken')
     const scope = getClaimFromToken(accessToken, 'scope');
-    return scope.includes("ADMIN");
+    console.log(scope)
+    return scope?.includes("ADMIN");
 }

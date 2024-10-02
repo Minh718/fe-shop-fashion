@@ -8,7 +8,9 @@ import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import DiscountIcon from '@mui/icons-material/Discount';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearUserInfo } from '../../../../features/user/userSlice';
 const navitems = [
     {
         id: 1,
@@ -80,6 +82,8 @@ export default function SideBar() {
     const [open, setOpen] = React.useState(true);
     const [indexNav, setIndexNav] = React.useState(1);
 
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
     return (
         <div className={`${open ? "col-span-2 border-r-2" : "w-0"} h-[100vh] transition-all sticky top-0 bg-white `}>
             <div className='h-full py-5  flex flex-col justify-between overflow-hidden '>
@@ -100,7 +104,10 @@ export default function SideBar() {
                         ))}
                     </div>
                 </div>
-                <div>LogOut</div>
+                <div className='flex justify-center font-bold cursor-pointer' onClick={() => {
+                    dispatch(clearUserInfo())
+                    navigate("/login")
+                }}>LogOut</div>
             </div>
 
             {open ? "" : <div className='absolute top-1/2 left-0 bg-black rounded-full text-white'>

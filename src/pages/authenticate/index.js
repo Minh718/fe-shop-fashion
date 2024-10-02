@@ -9,6 +9,7 @@ import { userLoginByGoogle } from "../../api/authenthicateApi";
 export default function Authenticate() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { isAuthenticated } = useSelector(state => state.user);
     const [queryParameters] = useSearchParams()
     useEffect(() => {
         // console.log(window.location.href);
@@ -18,7 +19,6 @@ export default function Authenticate() {
 
         if (queryParameters.get("code")) {
             const authCode = queryParameters.get("code");
-            const urlBE = process.env.REACT_APP_API_URL;
             (async () => {
                 try {
                     const result = await userLoginByGoogle(authCode);
@@ -26,13 +26,17 @@ export default function Authenticate() {
                     Cookies.set('accessToken', result.accessToken);
                     Cookies.set('refreshToken', result.refreshToken);
                     Cookies.set('x-user-id', result.id);
-                    navigate("/");
                 } catch (err) {
                     navigate("/login")
                 }
             })();
         }
     }, []);
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/home");
+        }
+    }, [isAuthenticated, navigate]);
     return (
         <>
             <Box

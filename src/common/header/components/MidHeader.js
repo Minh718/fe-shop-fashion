@@ -64,7 +64,7 @@ function MidHeader() {
     <AppBar position="static" className='bg-black'>
       <Container maxWidth="xl">
         <Toolbar disableGutters className='flex justify-around'>
-          <Link to={"/"}>
+          <Link to={"/home"}>
             <Box sx={{ display: { xs: 'none', md: 'flex' } }} className='flex items-center' >
               <img src="/logo.png" alt="??" className='w-[80px]' />
               <Typography

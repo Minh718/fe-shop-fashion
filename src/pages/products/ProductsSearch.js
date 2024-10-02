@@ -47,19 +47,31 @@ export default function ProductsSearch() {
       setPage(value);
     }
   }
-
   const handleSortProducts = async (sort) => {
-    if (sortBy === sort.sortBy && order === sort.order) return;
-    setSortBy(sort.sortBy);
-    setOrder(sort.order);
-    setPage(1);
-    const res = await searchProducts({ query, sortBy: sort.sortBy, order: sort.order });
-    setProducts(res.result);
-  }
+    if (sort.order === 'asc') {
+      if (sort.sortBy === "price") {
+        products.sort((a, b) => a.price - b.price);
+      } else if (sort.sortBy === "name") {
+        products.sort((a, b) => a.name.localeCompare(b.name));
+      } else if (sort.sortBy === "createdDate") {
+        products.sort((a, b) => new Date(a.createdDate) - new Date(b.createdDate));
+      }
+    } else {
+      if (sort.sortBy === "price") {
+        products.sort((a, b) => b.price - a.price);
+      } else if (sort.sortBy === "name") {
+        products.sort((a, b) => b.name.localeCompare(a.name));
+      } else if (sort.sortBy === "createdDate") {
+        products.sort((a, b) => new Date(b.createdDate) - new Date(a.createdDate));
+      }
+    }
+    setProducts([...products]);
+  };
+
   return (
     <div className="flex justify-center">
 
-      <DisplayProducts sorts={sorts} page={page} handleSortProducts={handleSortProducts} products={products} metadata={metadata} name={"Answer of search: " + query} handleChangePage={handleChangePage} links={links} />
+      <DisplayProducts page={page} handleSortProducts={handleSortProducts} products={products} metadata={metadata} name={"Answer of search: " + query} handleChangePage={handleChangePage} links={links} />
     </div>
   )
 }

@@ -104,7 +104,7 @@ export default function Cart() {
                 discount: 0,
             })
         } else handleCheckout();
-    }, [choosedCpss, currentCode, handleCheckout]);
+    }, [choosedCpss, currentCode]);
     if (cartProductSizeColors === null) return <Loading />
     return (
         <div className="flex justify-center">

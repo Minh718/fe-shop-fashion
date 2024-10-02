@@ -67,7 +67,6 @@ export default function ProductCart({ handleRemoveProduct, setChoosedCpss, choos
                                         {option}
                                     </MenuItem>
                                 ))}
-                                <MenuItem value={99}>99</MenuItem>
                             </Select>
                         </FormControl>
                     </div>

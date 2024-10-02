@@ -7,7 +7,7 @@ import { Backdrop, CircularProgress } from '@mui/material';
 import LoginEmailSDT from './components/LoginEmailSDT';
 import { oAuthConfig } from '../../configurations/oAuthConfig';
 export default function Login() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const [userDetails, setUserDetails] = useState({});
 
   const handleLoginByGoogle = () => {

@@ -102,46 +102,49 @@ function App() {
       ]
     },
     {
+      path: "/authenticate",
+      element: <Authenticate />,
+      // loader: teamLoader,
+    },
+    {
       path: "/",
       element: <Home />,
       // loader: () => getAllCategories(),
       children: [
         {
+          path: "home",
+          element: <HomePage />,
+          loader: () => getListProductsForHomePage(),
+        },
+        {
           path: "/",
           element: <HomePage />,
-          loader: () => {
-            return getListProductsForHomePage();
-          },
+          loader: () => getListProductsForHomePage(),
         },
         {
-          path: "/authenticate",
-          element: <Authenticate />,
-          // loader: teamLoader,
-        },
-        {
-          path: "/login",
+          path: "login",
           element: <Login />,
           // loader: teamLoader,
         },
         {
-          path: "/register",
+          path: "register",
           element: <Register />,
           // loader: teamLoader,
         },
         {
-          path: "/payment-success",
+          path: "payment-success",
           element: <PaymentSuccess />,
           // loader: teamLoader,
         },
         {
-          path: "/products/news",
+          path: "products/news",
           element: <News />,
           loader: () => {
             return getPublicProducts({ size: 20, sortBy: "createdDate", order: "desc" });
           },
         },
         {
-          path: "/products/search",
+          path: "products/search",
           element: <ProductsSearch />,
           loader: ({ request }) => {
             const url = new URL(request.url);
@@ -150,17 +153,17 @@ function App() {
           },
         },
         {
-          path: "/payment-failed",
+          path: "payment-failed",
           element: <PaymentFail />,
           // loader: teamLoader,
         },
         {
-          path: "/order-success",
+          path: "order-success",
           element: <SuccessOrderPage />,
           // loader: teamLoader,
         },
         {
-          path: "/products/:thump",
+          path: "products/:thump",
           element: <SubCategoryProducts />,
           loader: ({ params }) => {
             const { thump } = params;
@@ -168,11 +171,11 @@ function App() {
           },
         },
         {
-          path: "/product/:id",
+          path: "product/:id",
           element: <ProductDetailPage />,
         },
         {
-          path: "/order/:id",
+          path: "order/:id",
 
           element: (
             <PrivateRoute>
@@ -181,7 +184,7 @@ function App() {
           ),
         },
         {
-          path: "/cart",
+          path: "cart",
           element: (
             <PrivateRoute>
               <Cart />
@@ -195,7 +198,7 @@ function App() {
           // },
         },
         {
-          path: "/orders",
+          path: "orders",
           element: (
             <PrivateRoute>
               <Order />
@@ -208,7 +211,7 @@ function App() {
           // },
         },
         {
-          path: "/*",
+          path: "*",
           element: <NotFound />,
         },
       ],
