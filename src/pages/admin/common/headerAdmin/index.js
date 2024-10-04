@@ -14,7 +14,7 @@ export default function HeaderAdmin({ setChatbox, setPrivateStompClient, private
     const [chatBoxs, setChatBoxs] = React.useState([]);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [numNewChat, setNumNewChat] = React.useState(0);
-
+    const accessToken = Cookies.get('accessToken');
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -29,7 +29,7 @@ export default function HeaderAdmin({ setChatbox, setPrivateStompClient, private
         handleClose();
     }
     useEffect(() => {
-        const privateSocket = new SockJS(`${API_URL}/ws`);
+        const privateSocket = new SockJS(API_URL + `/ws?access_token=${accessToken}`);
         const privateStomp = Stomp.over(privateSocket);
 
         privateStomp.connect({}, (frame) => {
