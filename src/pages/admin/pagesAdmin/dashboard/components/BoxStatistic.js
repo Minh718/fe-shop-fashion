@@ -8,7 +8,7 @@ export default function BoxStatistic({ data, typeStatistic, name }) {
         <div className='flex-grow bg-white rounded-lg p-4 shadow-md'>
             <div className='pb-2'>{name}</div>
             <div className='flex justify-between'>
-                <div className='text-3xl font-semibold'>{data.value}</div>
+                <div className='text-3xl font-semibold'>{data.value.toFixed(2)}</div>
                 <div className='text-[12px] flex flex-col items-center'>
                     {data.percent >= 0 ? <div className='text-green-700 flex text-[14px] items-center'>
                         <TrendingUpIcon fontSize='small' />
